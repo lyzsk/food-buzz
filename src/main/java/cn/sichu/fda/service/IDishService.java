@@ -1,11 +1,12 @@
 package cn.sichu.fda.service;
 
+import cn.sichu.fda.dto.DishDto;
 import cn.sichu.fda.entity.Dish;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author sichu
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IDishService extends IService<Dish> {
 
+    public void saveWithFlavor(DishDto dishDto);
 }
