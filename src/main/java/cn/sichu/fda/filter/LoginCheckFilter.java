@@ -1,5 +1,6 @@
 package cn.sichu.fda.filter;
 
+import cn.sichu.fda.common.BaseContext;
 import cn.sichu.fda.common.Result;
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
@@ -48,6 +49,11 @@ public class LoginCheckFilter implements Filter {
         if (request.getSession().getAttribute("employee") != null) {
             log.info("用户已登录,用户id为: {}",
                 request.getSession().getAttribute("employee"));
+            long id = Thread.currentThread().getId();
+            log.info("login filter 的线程id为:{}", id);
+            // 从session获取userId, set 到 LocalThread 中
+            Long userId = (Long)request.getSession().getAttribute("employee");
+            BaseContext.setCurrentId(userId);
             filterChain.doFilter(request, response);
             return;
         }

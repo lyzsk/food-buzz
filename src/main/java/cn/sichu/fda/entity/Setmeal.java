@@ -1,14 +1,17 @@
 package cn.sichu.fda.entity;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author sichu
@@ -57,21 +60,25 @@ public class Setmeal implements Serializable {
     /**
      * 创建时间
      */
+    @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createTime;
 
     /**
      * 更新时间
      */
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime updateTime;
 
     /**
      * 创建人
      */
+    @TableField(fill = FieldFill.INSERT)
     private Long createUser;
 
     /**
      * 修改人
      */
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private Long updateUser;
 
     public Long getId() {
@@ -81,6 +88,7 @@ public class Setmeal implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
     public Long getCategoryId() {
         return categoryId;
     }
@@ -88,6 +96,7 @@ public class Setmeal implements Serializable {
     public void setCategoryId(Long categoryId) {
         this.categoryId = categoryId;
     }
+
     public String getName() {
         return name;
     }
@@ -95,6 +104,7 @@ public class Setmeal implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+
     public BigDecimal getPrice() {
         return price;
     }
@@ -102,6 +112,7 @@ public class Setmeal implements Serializable {
     public void setPrice(BigDecimal price) {
         this.price = price;
     }
+
     public Integer getStatus() {
         return status;
     }
@@ -109,6 +120,7 @@ public class Setmeal implements Serializable {
     public void setStatus(Integer status) {
         this.status = status;
     }
+
     public String getDescription() {
         return description;
     }
@@ -116,6 +128,7 @@ public class Setmeal implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
+
     public String getImage() {
         return image;
     }
@@ -123,6 +136,7 @@ public class Setmeal implements Serializable {
     public void setImage(String image) {
         this.image = image;
     }
+
     public LocalDateTime getCreateTime() {
         return createTime;
     }
@@ -130,6 +144,7 @@ public class Setmeal implements Serializable {
     public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime;
     }
+
     public LocalDateTime getUpdateTime() {
         return updateTime;
     }
@@ -137,6 +152,7 @@ public class Setmeal implements Serializable {
     public void setUpdateTime(LocalDateTime updateTime) {
         this.updateTime = updateTime;
     }
+
     public Long getCreateUser() {
         return createUser;
     }
@@ -144,6 +160,7 @@ public class Setmeal implements Serializable {
     public void setCreateUser(Long createUser) {
         this.createUser = createUser;
     }
+
     public Long getUpdateUser() {
         return updateUser;
     }
@@ -154,18 +171,10 @@ public class Setmeal implements Serializable {
 
     @Override
     public String toString() {
-        return "Setmeal{" +
-            "id=" + id +
-            ", categoryId=" + categoryId +
-            ", name=" + name +
-            ", price=" + price +
-            ", status=" + status +
-            ", description=" + description +
-            ", image=" + image +
-            ", createTime=" + createTime +
-            ", updateTime=" + updateTime +
-            ", createUser=" + createUser +
-            ", updateUser=" + updateUser +
-        "}";
+        return "Setmeal{" + "id=" + id + ", categoryId=" + categoryId
+            + ", name=" + name + ", price=" + price + ", status=" + status
+            + ", description=" + description + ", image=" + image
+            + ", createTime=" + createTime + ", updateTime=" + updateTime
+            + ", createUser=" + createUser + ", updateUser=" + updateUser + "}";
     }
 }

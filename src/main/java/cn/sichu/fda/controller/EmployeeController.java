@@ -12,7 +12,6 @@ import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -71,11 +70,11 @@ public class EmployeeController {
         @RequestBody Employee employee) {
         // log.info("新增员工, 员工信息: {}", employee.toString());
         employee.setPassword(DigestUtils.md5DigestAsHex("123456".getBytes()));
-        employee.setCreateTime(LocalDateTime.now());
-        employee.setUpdateTime(LocalDateTime.now());
-        Long empId = (Long)request.getSession().getAttribute("employee");
-        employee.setCreateUser(empId);
-        employee.setUpdateUser(empId);
+        // employee.setCreateTime(LocalDateTime.now());
+        // employee.setUpdateTime(LocalDateTime.now());
+        // Long empId = (Long)request.getSession().getAttribute("employee");
+        // employee.setCreateUser(empId);
+        // employee.setUpdateUser(empId);
         employeeService.save(employee);
         return Result.success("新增员工成功");
     }
@@ -96,9 +95,11 @@ public class EmployeeController {
     public Result<String> update(HttpServletRequest request,
         @RequestBody Employee employee) {
         log.info(employee.toString());
-        Long empId = (Long)request.getSession().getAttribute("employee");
-        employee.setUpdateTime(LocalDateTime.now());
-        employee.setUpdateUser(empId);
+        // Long empId = (Long)request.getSession().getAttribute("employee");
+        // employee.setUpdateTime(LocalDateTime.now());
+        // employee.setUpdateUser(empId);
+        long id = Thread.currentThread().getId();
+        log.info("线程id为:{}", id);
         employeeService.updateById(employee);
         return Result.success("更新成功");
     }

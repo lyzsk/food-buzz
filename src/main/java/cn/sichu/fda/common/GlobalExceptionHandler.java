@@ -34,4 +34,10 @@ public class GlobalExceptionHandler {
         }
         return Result.error("未知错误");
     }
+
+    @ExceptionHandler(CustomException.class)
+    public Result<String> exceptionHandler(CustomException e) {
+        log.error(e.getMessage());
+        return Result.error(e.getMessage());
+    }
 }

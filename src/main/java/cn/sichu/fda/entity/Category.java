@@ -1,13 +1,16 @@
 package cn.sichu.fda.entity;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author sichu
@@ -46,21 +49,25 @@ public class Category implements Serializable {
     /**
      * 创建时间
      */
+    @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createTime;
 
     /**
      * 更新时间
      */
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime updateTime;
 
     /**
      * 创建人
      */
+    @TableField(fill = FieldFill.INSERT)
     private Long createUser;
 
     /**
      * 修改人
      */
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private Long updateUser;
 
     public Long getId() {
@@ -70,6 +77,7 @@ public class Category implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
     public Integer getType() {
         return type;
     }
@@ -77,6 +85,7 @@ public class Category implements Serializable {
     public void setType(Integer type) {
         this.type = type;
     }
+
     public String getName() {
         return name;
     }
@@ -84,6 +93,7 @@ public class Category implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+
     public Integer getSort() {
         return sort;
     }
@@ -91,6 +101,7 @@ public class Category implements Serializable {
     public void setSort(Integer sort) {
         this.sort = sort;
     }
+
     public Integer getStatus() {
         return status;
     }
@@ -98,6 +109,7 @@ public class Category implements Serializable {
     public void setStatus(Integer status) {
         this.status = status;
     }
+
     public LocalDateTime getCreateTime() {
         return createTime;
     }
@@ -105,6 +117,7 @@ public class Category implements Serializable {
     public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime;
     }
+
     public LocalDateTime getUpdateTime() {
         return updateTime;
     }
@@ -112,6 +125,7 @@ public class Category implements Serializable {
     public void setUpdateTime(LocalDateTime updateTime) {
         this.updateTime = updateTime;
     }
+
     public Long getCreateUser() {
         return createUser;
     }
@@ -119,6 +133,7 @@ public class Category implements Serializable {
     public void setCreateUser(Long createUser) {
         this.createUser = createUser;
     }
+
     public Long getUpdateUser() {
         return updateUser;
     }
@@ -129,16 +144,9 @@ public class Category implements Serializable {
 
     @Override
     public String toString() {
-        return "Category{" +
-            "id=" + id +
-            ", type=" + type +
-            ", name=" + name +
-            ", sort=" + sort +
-            ", status=" + status +
-            ", createTime=" + createTime +
-            ", updateTime=" + updateTime +
-            ", createUser=" + createUser +
-            ", updateUser=" + updateUser +
-        "}";
+        return "Category{" + "id=" + id + ", type=" + type + ", name=" + name
+            + ", sort=" + sort + ", status=" + status + ", createTime="
+            + createTime + ", updateTime=" + updateTime + ", createUser="
+            + createUser + ", updateUser=" + updateUser + "}";
     }
 }
