@@ -37,7 +37,7 @@ public class LoginCheckFilter implements Filter {
         // 白名单url
         String[] urls =
             new String[] {"/employee/login", "/employee/logout", "/backend/**",
-                "/front/**", "/common/**"};
+                "/front/**", "/common/**", "/user/sendMsg", "/user/login"};
         // 判断本次请求是否需要处理
         boolean check = check(urls, requestURI);
         if (check) {
@@ -52,11 +52,18 @@ public class LoginCheckFilter implements Filter {
             long id = Thread.currentThread().getId();
             log.info("login filter 的线程id为:{}", id);
             // 从session获取userId, set 到 LocalThread 中
-            Long userId = (Long)request.getSession().getAttribute("employee");
+            Long empId = (Long)request.getSession().getAttribute("employee");
+            BaseContext.setCurrentId(empId);
+            filterChain.doFilter(request, response);
+            return;
+        }
+        if (request.getSession().getAttribute("user") != null) {
+            Long userId = (Long)request.getSession().getAttribute("user");
             BaseContext.setCurrentId(userId);
             filterChain.doFilter(request, response);
             return;
         }
+
         log.info("用户尚未登陆");
         response.getWriter().write(JSON.toJSONString(Result.error("NOTLOGIN")));
         return;

@@ -31,12 +31,12 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
     public void updateFill(MetaObject metaObject) {
         log.info("公共字段自动填充[update]...");
         log.info(metaObject.toString());
+        metaObject.setValue("updateTime", LocalDateTime.now());
         long id = Thread.currentThread().getId();
         log.info("线程id为:{}, 当前用户id为: {}", id, BaseContext.getCurrentId());
+        // metaObject.setValue("updateUser", BaseContext.getCurrentId());
         Long userId = (Long)request.getSession().getAttribute("employee");
         log.info("通过httpServletRequest得到的用户id为: {}", userId);
-        metaObject.setValue("updateTime", LocalDateTime.now());
-        // metaObject.setValue("updateUser", BaseContext.getCurrentId());
         metaObject.setValue("updateUser", userId);
     }
 }
