@@ -4,6 +4,8 @@ import cn.sichu.fda.dto.DishDto;
 import cn.sichu.fda.entity.Dish;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+
 /**
  * <p>
  * 服务类
@@ -14,5 +16,11 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IDishService extends IService<Dish> {
 
-    public void saveWithFlavor(DishDto dishDto);
+    void saveWithFlavor(DishDto dishDto);
+
+    DishDto getByIdWithFlavor(Long id);
+
+    void updateWithFlavor(DishDto dishDto);
+
+    void deleteByIds(List<Long> ids);
 }

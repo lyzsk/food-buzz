@@ -4,6 +4,7 @@ import cn.sichu.fda.common.Result;
 import cn.sichu.fda.dto.DishDto;
 import cn.sichu.fda.entity.Category;
 import cn.sichu.fda.entity.Dish;
+import cn.sichu.fda.entity.DishFlavor;
 import cn.sichu.fda.service.ICategoryService;
 import cn.sichu.fda.service.IDishFlavorService;
 import cn.sichu.fda.service.IDishService;
@@ -76,5 +77,63 @@ public class DishController {
         }).collect(Collectors.toList());
         dishDtoPage.setRecords(list);
         return Result.success(dishDtoPage);
+    }
+
+    @GetMapping("/{id}")
+    public Result<DishDto> get(@PathVariable Long id) {
+        DishDto dishDto = dishService.getByIdWithFlavor(id);
+        return Result.success(dishDto);
+    }
+
+    @PutMapping
+    public Result<String> update(@RequestBody DishDto dishDto) {
+        log.info(dishDto.toString());
+        dishService.updateWithFlavor(dishDto);
+
+        return Result.success("修改菜品成功");
+    }
+
+    /**
+     * 根据条件查询对应的菜品数据
+     *
+     * @param dish
+     * @return
+     */
+    @GetMapping("/list")
+    public Result<List<Dish>> list(Dish dish) {
+        LambdaQueryWrapper<Dish> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(dish.getCategoryId() != null, Dish::getCategoryId,
+            dish.getCategoryId());
+        queryWrapper.eq(Dish::getStatus, 1);
+        queryWrapper.orderByDesc(Dish::getUpdateTime);
+        List<Dish> list = dishService.list(queryWrapper);
+        return Result.success(list);
+    }
+
+    @PostMapping("/status/{status}")
+    public Result<String> status(@PathVariable("status") Integer status,
+        @RequestParam List<Long> ids) {
+        LambdaQueryWrapper<Dish> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.in(ids != null, Dish::getId, ids);
+        List<Dish> list = dishService.list(queryWrapper);
+        for (Dish dish : list) {
+            if (dish != null) {
+                dish.setStatus(status);
+                dishService.updateById(dish);
+            }
+        }
+        return Result.success("售卖状态修改成功");
+    }
+
+    @DeleteMapping
+    public Result<String> delete(@RequestParam("ids") List<Long> ids) {
+        // 先逻辑删除菜品
+        dishService.deleteByIds(ids);
+        // 再逻辑删除菜品对应口味
+        LambdaQueryWrapper<DishFlavor> queryWrapper =
+            new LambdaQueryWrapper<>();
+        queryWrapper.in(DishFlavor::getDishId, ids);
+        dishFlavorService.remove(queryWrapper);
+        return Result.success("菜品删除成功");
     }
 }

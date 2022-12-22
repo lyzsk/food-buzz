@@ -3,12 +3,13 @@ package cn.sichu.fda.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author sichu
@@ -26,9 +27,9 @@ public class SetmealDish implements Serializable {
     private Long id;
 
     /**
-     * 套餐id 
+     * 套餐id
      */
-    private String setmealId;
+    private Long setmealId;
 
     /**
      * 菜品id
@@ -57,13 +58,15 @@ public class SetmealDish implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-    public String getSetmealId() {
+
+    public Long getSetmealId() {
         return setmealId;
     }
 
-    public void setSetmealId(String setmealId) {
+    public void setSetmealId(Long setmealId) {
         this.setmealId = setmealId;
     }
+
     public String getDishId() {
         return dishId;
     }
@@ -71,6 +74,7 @@ public class SetmealDish implements Serializable {
     public void setDishId(String dishId) {
         this.dishId = dishId;
     }
+
     public String getName() {
         return name;
     }
@@ -78,6 +82,7 @@ public class SetmealDish implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+
     public BigDecimal getPrice() {
         return price;
     }
@@ -85,6 +90,7 @@ public class SetmealDish implements Serializable {
     public void setPrice(BigDecimal price) {
         this.price = price;
     }
+
     public Integer getCopies() {
         return copies;
     }
@@ -95,13 +101,8 @@ public class SetmealDish implements Serializable {
 
     @Override
     public String toString() {
-        return "SetmealDish{" +
-            "id=" + id +
-            ", setmealId=" + setmealId +
-            ", dishId=" + dishId +
-            ", name=" + name +
-            ", price=" + price +
-            ", copies=" + copies +
-        "}";
+        return "SetmealDish{" + "id=" + id + ", setmealId=" + setmealId
+            + ", dishId=" + dishId + ", name=" + name + ", price=" + price
+            + ", copies=" + copies + "}";
     }
 }
