@@ -1,6 +1,5 @@
 package cn.sichu.fda.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 
 import java.io.Serializable;
@@ -22,7 +21,7 @@ public class Orders implements Serializable {
     /**
      * 主键
      */
-    @TableId(value = "id", type = IdType.AUTO)
+    @TableId(value = "id")
     private Long id;
 
     /**
