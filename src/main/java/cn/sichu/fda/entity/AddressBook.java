@@ -88,7 +88,7 @@ public class AddressBook implements Serializable {
     /**
      * 默认 0 否 1是
      */
-    private Boolean isDefault;
+    private Integer isDefault;
 
     public Long getId() {
         return id;
@@ -194,11 +194,11 @@ public class AddressBook implements Serializable {
         this.label = label;
     }
 
-    public Boolean getIsDefault() {
+    public Integer getIsDefault() {
         return isDefault;
     }
 
-    public void setIsDefault(Boolean isDefault) {
+    public void setIsDefault(Integer isDefault) {
         this.isDefault = isDefault;
     }
 

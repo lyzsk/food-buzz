@@ -95,20 +95,51 @@ public class DishController {
 
     /**
      * 根据条件查询对应的菜品数据
+     * 这个方法在客户端也会被调用
+     * 不能只传Dish, 需要用到DishDto里的flavors集合
      *
      * @param dish
      * @return
      */
     @GetMapping("/list")
-    public Result<List<Dish>> list(Dish dish) {
+    public Result<List<DishDto>> list(Dish dish) {
         LambdaQueryWrapper<Dish> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(dish.getCategoryId() != null, Dish::getCategoryId,
             dish.getCategoryId());
         queryWrapper.eq(Dish::getStatus, 1);
         queryWrapper.orderByDesc(Dish::getUpdateTime);
         List<Dish> list = dishService.list(queryWrapper);
-        return Result.success(list);
+        List<DishDto> dishDtoList = list.stream().map(item -> {
+            DishDto dishDto = new DishDto();
+            BeanUtils.copyProperties(item, dishDto);
+            Long categoryId = item.getCategoryId();
+            Category category = categoryService.getById(categoryId);
+            if (category != null) {
+                String categoryName = category.getName();
+                dishDto.setCategoryName(categoryName);
+            }
+            Long dishId = item.getId();
+            LambdaQueryWrapper<DishFlavor> dishFlavorLambdaQueryWrapper =
+                new LambdaQueryWrapper<>();
+            dishFlavorLambdaQueryWrapper.eq(DishFlavor::getDishId, dishId);
+            List<DishFlavor> dishFlavorList =
+                dishFlavorService.list(dishFlavorLambdaQueryWrapper);
+            dishDto.setFlavors(dishFlavorList);
+            return dishDto;
+        }).collect(Collectors.toList());
+        return Result.success(dishDtoList);
     }
+
+    // @GetMapping("/list")
+    // public Result<List<Dish>> list(Dish dish) {
+    //     LambdaQueryWrapper<Dish> queryWrapper = new LambdaQueryWrapper<>();
+    //     queryWrapper.eq(dish.getCategoryId() != null, Dish::getCategoryId,
+    //         dish.getCategoryId());
+    //     queryWrapper.eq(Dish::getStatus, 1);
+    //     queryWrapper.orderByDesc(Dish::getUpdateTime);
+    //     List<Dish> list = dishService.list(queryWrapper);
+    //     return Result.success(list);
+    // }
 
     @PostMapping("/status/{status}")
     public Result<String> status(@PathVariable("status") Integer status,
