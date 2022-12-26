@@ -10,10 +10,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>cn.sichu</groupId>
-    <artifactId>food-delivery-app</artifactId>
+    <artifactId>food-buzz</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>food-delivery-app</name>
-    <description>food-delivery-app</description>
+    <name>food-buzz</name>
+    <description>food-buzz</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>

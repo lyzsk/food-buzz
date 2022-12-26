@@ -24,7 +24,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/common")
 public class CommonController {
-    @Value("${food-delivery-app.path}")
+    @Value("${food-buzz.path}")
     private String basePath;
 
     /**
