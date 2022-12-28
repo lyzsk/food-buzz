@@ -11,6 +11,12 @@ spring:
     multipart:
       max-file-size: 10MB
       max-request-size: 10MB
+  redis:
+    host: 127.0.0.1
+    database: 0
+    prot: 6379
+    password:
+
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
