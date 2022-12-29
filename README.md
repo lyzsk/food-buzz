@@ -46,7 +46,7 @@ git checkout master
 -   **common modules**
 
     -   [x] **image upload/download** for `{dish/setmeal image upload/download}`
-    -   [ ] **redis** caching for `{SMS code}`, `{menu info}`
+    -   [x] **redis** caching for `{SMS code}`, `{menu info}`
     -   [ ] **chatting module** for `{client-to-seller/seller-to-rider online chatting}`
 
 # LICENSE
