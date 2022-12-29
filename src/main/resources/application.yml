@@ -16,7 +16,9 @@ spring:
     database: 0
     prot: 6379
     password:
-
+  cache:
+    redis:
+      time-to-live: 1800000
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true

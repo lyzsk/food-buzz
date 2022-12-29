@@ -51,6 +51,6 @@ git checkout master
 
 # LICENSE
 
-[MIT] Copyright (c) 2022 lyzsk
+[MIT LICENSE] Copyright (c) 2022 lyzsk
 
-[mit]: https://github.com/lyzsk/food-buzz/blob/master/LICENSE
+[mit license]: https://github.com/lyzsk/food-buzz/blob/master/LICENSE
