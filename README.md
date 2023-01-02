@@ -20,7 +20,12 @@ This is `v2.0` branch, it's a demo for this project, developed by Vue 2.x, Sprin
 
 The key updates from `v1.0`:
 
-1. Update database design, add logical delete to tables refer to important data, add more fields for third party login identification ids.
+1. Update database design
+
+    - add logical delete to tables refer to important data, add more fields for third party login identification ids.
+
+    - improve user experience for both UK users and Chinese users split `name` column into `full name`, `last name`, `first name` columns, and set length according to [UK Government Data Standards Catalogue]
+
 2. Refactor frontend for Mobile App, switch from Vue.js to React.js
 3. Add configurations for `Sharding-JDBC` framework for **read-write separation**, add nginx configurations for **load balancing**, currently using round robin method.
 4. Abandon MyBatisPlus code generator for basic entity, mapper, controller reverse generation, because it will cause many bugs when using snowflake id generation, java.util.LocalDateTime for sql datetime fields.
@@ -99,4 +104,11 @@ git checkout master
 
 [MIT LICENSE] Copyright (c) 2022 lyzsk
 
+# Reference
+
+1. [UK Government Data Standards Catalogue]
+2. [List of standard lengths for database fields]
+
 [mit license]: https://github.com/lyzsk/food-buzz/blob/master/LICENSE
+[uk government data standards catalogue]: https://webarchive.nationalarchives.gov.uk/ukgwa/+/http://www.cabinetoffice.gov.uk/media/254290/GDS%20Catalogue%20Vol%202.pdf
+[list of standard lengths for database fields]: https://stackoverflow.com/questions/20958/list-of-standard-lengths-for-database-fields
