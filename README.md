@@ -1,20 +1,28 @@
 **[简体中文](./README.CN.md) | English**
 
 <p align="center">
-    <a href="https://github.com/lyzsk/food-delivery-app/blob/master/LICENSE">
-        <img src="https://img.shields.io/github/license/lyzsk/food-delivery-app.svg?style=plastic&logo=github" />
+    <a href="https://github.com/lyzsk/food-buzz/blob/master/LICENSE">
+        <img src="https://img.shields.io/github/license/lyzsk/food-buzz.svg?style=plastic&logo=github" />
     </a>
-    <a href="https://github.com/lyzsk/food-delivery-app/members">
-        <img src="https://img.shields.io/github/forks/lyzsk/food-delivery-app.svg?style=plastic&logo=github" />
+    <a href="https://github.com/lyzsk/food-buzz/members">
+        <img src="https://img.shields.io/github/forks/lyzsk/food-buzz.svg?style=plastic&logo=github" />
     </a>
-    <a href="https://github.com/lyzsk/food-delivery-app/stargazers">
-        <img src="https://img.shields.io/github/stars/lyzsk/food-delivery-app.svg?style=plastic&logo=github" />
+    <a href="https://github.com/lyzsk/food-buzz/stargazers">
+        <img src="https://img.shields.io/github/stars/lyzsk/food-buzz.svg?style=plastic&logo=github" />
     </a>
 </p>
 
-# food delivery app
+# FoodBuzz
 
 > **_If you like this project or it helps you in some way, don't forget to star._** :star:
+
+This is `version-1.0` branch, it's a demo for this project, developed by Vue 2.x, SpringBoot 2.7.x.
+
+To check full version of this project:
+
+```git
+git checkout master
+```
 
 # Features
 
@@ -38,11 +46,11 @@
 -   **common modules**
 
     -   [x] **image upload/download** for `{dish/setmeal image upload/download}`
-    -   [ ] **redis** caching for `{SMS code}`, `{menu info}`
+    -   [x] **redis** caching for `{SMS code}`, `{menu info}`
     -   [ ] **chatting module** for `{client-to-seller/seller-to-rider online chatting}`
 
 # LICENSE
 
-[MIT] Copyright (c) 2022 lyzsk
+[MIT LICENSE] Copyright (c) 2022 lyzsk
 
-[mit]: https://github.com/lyzsk/food-delivery-app/blob/master/LICENSE
+[mit license]: https://github.com/lyzsk/food-buzz/blob/master/LICENSE
